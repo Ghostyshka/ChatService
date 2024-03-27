@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 const App = () => {
   const [connection, setConnection] = useState();
+  const [messages, setMessages] = useState([]);
 
   const joinRoom = async (user, room) => {
     try{
@@ -15,7 +16,7 @@ const App = () => {
       .build();
 
       connection.on("ReceiveMessage", (user, message) => {
-        console.log('message received: ', message);
+        setMessages(messages => [...message, {user, message}]);
       });
 
       await connection.start();
@@ -27,7 +28,7 @@ const App = () => {
   }
 
   return <div className='app'>
-    <h2>MyChat</h2>
+    <h2>Social Club Chat</h2>
     <hr/>
     <Lobby joinRoom={joinRoom}/>
   </div>
