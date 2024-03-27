@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Button, Form } from "react-bootstrap"
 
 const Lobby = ({joinRoom}) => {
-    const [user, setUser] = useState;
-    const [room, setRoom] = useState;
+    const [user, setUser] = useState();
+    const [room, setRoom] = useState();
     return <Form className="lobby" 
         onSubmit={e =>{
             e.preventDefault();
