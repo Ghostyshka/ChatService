@@ -1,5 +1,5 @@
 
-const NessageContainer = ({message}) => {
+const MessageContainer = ({message}) => {
 
     return <div className="message-container">
         {message.map((m, index) =>
@@ -10,3 +10,5 @@ const NessageContainer = ({message}) => {
         )}
     </div>
 }
+
+export default MessageContainer;

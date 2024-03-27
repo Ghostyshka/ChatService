@@ -1,6 +1,7 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Lobby from './components/Lobby';
+import Chat from './components/Chat';
 import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
 import { useState } from 'react';
 
@@ -30,7 +31,11 @@ const App = () => {
   return <div className='app'>
     <h2>Social Club Chat</h2>
     <hr/>
-    <Lobby joinRoom={joinRoom}/>
+    {!connection
+    ?  <Lobby joinRoom={joinRoom}/>
+    : <Chat messages={messages} />
+    }
+   
   </div>
 }
 
