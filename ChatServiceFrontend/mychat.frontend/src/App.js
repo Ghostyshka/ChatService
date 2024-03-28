@@ -35,7 +35,7 @@ const App = () => {
 
   const closeConnection = async () => {
     try{
-      await this.connection.stop();
+      await connection.stop();
     }catch(e){
       console.log(e);
     }
