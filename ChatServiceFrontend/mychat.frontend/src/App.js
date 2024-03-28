@@ -16,8 +16,8 @@ const App = () => {
       .configureLogging(LogLevel.Information)
       .build();
 
-      connection.on("ReceiveMessage", (user, message) => {
-        setMessages(messages => [...message, {user, message}]);
+      connection.on("Receive Message", (user, message) => {
+        setMessages(messages => [...messages, {user, message}]);
       });
 
       await connection.start();
@@ -28,12 +28,21 @@ const App = () => {
     }
   }
 
+
+  const sendMessage = async (message) => {
+    try{
+      await connection.invoke("SendMessage", message);
+    } catch(e){
+        console.log(e);
+    }
+  }
+
   return <div className='app'>
     <h2>Social Club Chat</h2>
     <hr/>
     {!connection
     ?  <Lobby joinRoom={joinRoom}/>
-    : <Chat messages={messages} />
+    : <Chat messages={messages} sendMessage={sendMessage} />
     }
    
   </div>
